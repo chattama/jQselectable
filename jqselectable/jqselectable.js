@@ -187,7 +187,7 @@
             '>'
           ].join('')
         );
-        html = html + text;
+        html = html + text + (opt.title ? (" ( " + opt.title + " )") : "");
         html = html + (opt.disabled ? '</span>' : '</a>');
 
         if ( klass && /br/.test(klass) ) {
@@ -358,7 +358,7 @@
       }
 
       setTimeout(function() {
-        self.selected.focus();
+//        self.selected.focus();
       }, isNaN(conf.showDuration) ? (function() {
         var duration = conf.showDuration;
         return (/slow/.test(duration)) ? 610 :
@@ -458,6 +458,11 @@
       self.$elem.show();
 
       self.$elem.trigger('jQselectable.destroy');
+    },
+
+    view: function() {
+      var self = this;
+      return self.$view;
     }
   };
 
